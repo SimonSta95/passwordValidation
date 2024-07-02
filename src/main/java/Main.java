@@ -5,7 +5,7 @@ public class Main {
         String pw = createSecurePassword();
 
         System.out.println("length check: " + checkLength(pw));
-        System.out.println("digits check: " + checkLength(pw));
+        System.out.println("digits check: " + checkDigits(pw));
         System.out.println("upper lower check: " + checkForUpperAndLower(pw));
         System.out.println("common check: " + checkCommon(pw));
         System.out.println("special char check: " + checkSpecialChar(pw));
@@ -40,6 +40,7 @@ public class Main {
         }
         return false;
     }
+
     public static boolean checkForLower(String pw){
         for(int i = 0; i < pw.length(); i++){
             char ch = pw.charAt(i);
