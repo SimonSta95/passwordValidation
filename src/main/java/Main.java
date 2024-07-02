@@ -1,6 +1,15 @@
+import java.security.SecureRandom;
+
 public class Main {
     public static void main(String[] args) {
+        String pw = createSecurePassword();
 
+        System.out.println("length check: " + checkLength(pw));
+        System.out.println("digits check: " + checkLength(pw));
+        System.out.println("upper lower check: " + checkForUpperAndLower(pw));
+        System.out.println("common check: " + checkCommon(pw));
+        System.out.println("special char check: " + checkSpecialChar(pw));
+        System.out.println("password: " + pw);
     }
 
     public static boolean checkLength(String pw){
@@ -61,5 +70,40 @@ public class Main {
             }
         }
         return false;
+    }
+
+    public static String createSecurePassword(){
+        String UPPER_CASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String LOWER_CASE = "abcdefghijklmnopqrstuvwxyz";
+        String DIGITS = "0123456789";
+        String SPECIAL_CHARACTERS = "!@#$%^&*()-_+=<>?";
+        String ALL_CHARACTERS = UPPER_CASE + LOWER_CASE + DIGITS + SPECIAL_CHARACTERS;
+
+        SecureRandom random = new SecureRandom();
+
+        int PASSWORD_LENGTH = random.nextInt(16-8) + 8;
+
+        StringBuilder password = new StringBuilder(PASSWORD_LENGTH);
+
+        //Create random chars and digit and append to string to meet criteria
+        password.append(UPPER_CASE.charAt(random.nextInt(UPPER_CASE.length())));
+        password.append(LOWER_CASE.charAt(random.nextInt(LOWER_CASE.length())));
+        password.append(DIGITS.charAt(random.nextInt(DIGITS.length())));
+        password.append(SPECIAL_CHARACTERS.charAt(random.nextInt(SPECIAL_CHARACTERS.length())));
+
+        //fill rest of password
+        for (int i = 4; i < PASSWORD_LENGTH; i++) {
+            password.append(ALL_CHARACTERS.charAt(random.nextInt(ALL_CHARACTERS.length())));
+        }
+
+        //shuffle password
+        StringBuilder shuffledPassword = new StringBuilder(password.length());
+        while (!password.isEmpty()) {
+            int index = random.nextInt(password.length());
+            shuffledPassword.append(password.charAt(index));
+            password.deleteCharAt(index);
+        }
+
+        return shuffledPassword.toString();
     }
 }
