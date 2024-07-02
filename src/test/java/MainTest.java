@@ -1,8 +1,11 @@
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class MainTest {
 
     //Length check
+    @Test
     public void pwLengthTest_whenInputLength8_thenReturnTrue(){
         //GIVEN
         String pw = "TestPw69";
@@ -12,6 +15,7 @@ class MainTest {
         assertTrue(actual);
     }
 
+    @Test
     public void pwLengthTest_whenInputLength4_thenReturnFalse(){
         //GIVEN
         String pw = "Test";
@@ -21,6 +25,7 @@ class MainTest {
         assertFalse(actual);
     }
 
+    @Test
     public void pwLengthTest_whenInputLength10_thenReturnTrue(){
         //GIVEN
         String pw = "Test123456";
@@ -32,6 +37,7 @@ class MainTest {
 
 
     //Digits check
+    @Test
     public void pwCheckDigits_whenInputHasDigits_thenReturnTrue(){
         //GIVEN
         String pw = "TestPw69";
@@ -41,6 +47,7 @@ class MainTest {
         assertTrue(actual);
     }
 
+    @Test
     public void pwCheckDigits_whenInputHasNoDigits_thenReturnFalse(){
         //GIVEN
         String pw = "Testhaha";
@@ -53,6 +60,7 @@ class MainTest {
 
 
     //UpperLowerCase check
+    @Test
     public void pwCheckUpperLower_whenInputHasUpperLower_thenReturnTrue(){
         //GIVEN
         String pw = "TestPw69";
@@ -62,6 +70,7 @@ class MainTest {
         assertTrue(actual);
     }
 
+    @Test
     public void pwCheckUpperLower_whenInputNoHasUpper_thenReturnFalse(){
         //GIVEN
         String pw = "testpw69";
@@ -71,6 +80,7 @@ class MainTest {
         assertFalse(actual);
     }
 
+    @Test
     public void pwCheckUpperLower_whenInputNoHasLower_thenReturnFalse(){
         //GIVEN
         String pw = "TESTPW69";
@@ -80,6 +90,7 @@ class MainTest {
         assertFalse(actual);
     }
 
+    @Test
     public void pwCheckCommon_whenIsCommon_thenReturnFalse(){
         //GIVEN
         String pw = "TestPw69";
@@ -89,6 +100,7 @@ class MainTest {
         assertFalse(actual);
     }
 
+    @Test
     public void pwCheckCommon_whenIsNotCommon_thenReturnTrue(){
         //GIVEN
         String pw = "TestPw1234";
