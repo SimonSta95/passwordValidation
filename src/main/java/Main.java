@@ -52,4 +52,14 @@ public class Main {
         }
         return true;
     }
+
+    public static boolean checkSpecialChar(String pw){
+        for(int i = 0; i < pw.length(); i++){
+            char ch = pw.charAt(i);
+            if(!Character.isLetterOrDigit(ch)){
+                return true;
+            }
+        }
+        return false;
+    }
 }

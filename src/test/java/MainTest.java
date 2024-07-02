@@ -90,6 +90,7 @@ class MainTest {
         assertFalse(actual);
     }
 
+    //Common password check
     @Test
     public void pwCheckCommon_whenIsCommon_thenReturnFalse(){
         //GIVEN
@@ -108,6 +109,27 @@ class MainTest {
         boolean actual = Main.checkCommon(pw);
         //THEN
         assertTrue(actual);
+    }
+
+    //Special character check
+    @Test
+    public void pwCheckSpecial_whenHasSpecialCharacters_thenReturnTrue(){
+        //GIVEN
+        String pw = "TestPw_69";
+        //WHEN
+        boolean actual = Main.checkSpecialChar(pw);
+        //THEN
+        assertTrue(actual);
+    }
+
+    @Test
+    public void pwCheckSpecial_whenHasNoSpecialCharacters_thenReturnFalse(){
+        //GIVEN
+        String pw = "TestPw69";
+        //WHEN
+        boolean actual = Main.checkSpecialChar(pw);
+        //THEN
+        assertFalse(actual);
     }
 
 }
